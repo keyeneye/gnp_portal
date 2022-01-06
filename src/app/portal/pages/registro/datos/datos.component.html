@@ -1,0 +1,64 @@
+<div class="registro">
+  <div class="registro__titulo">
+    <button type="button" class="registro__back" id="return-registro" routerLink="/login">
+      <img src="./../../../../../assets/icons/icon-arrowback.png" alt="regresar a login">
+    </button>
+    <h1>Registro</h1>
+  </div>
+  <div class="registro__data">
+    <div class="registro__tags">
+      <span id="polizaSpan" class="registro__tags_seccion">
+        Póliza
+      </span>
+      <span id="contactoSpan" class="registro__tags_seccion">
+        Contacto
+      </span>
+      <span id="seguridadSpan" class="registro__tags_seccion">
+        Seguridad
+      </span>
+    </div>
+    <div class="registro__return" *ngIf="!polizaComp">
+      <button type="button" class="registro__return__button" (click)="returnPage()">
+        <img src="./../../../../../assets/icons/icon-arrowback.png" alt="regresar a login">
+        <h4 class="registro__return__text">Regresar</h4>
+      </button>
+    </div>
+    <h3 class="registro__tags_legend">Ingresa la información solicitada</h3>
+  </div>
+  <div class="registro__progress">
+    <div class="registro__progress_current">
+      <img *ngIf="polizaComp" src="./../../../../../assets/icons/icon-progressOne.png" alt="paso 1">
+      <img *ngIf="contactoComp" src="./../../../../../assets/icons/icon-progressTwo.png" alt="paso 2">
+      <img *ngIf="seguridadComp" src="./../../../../../assets/icons/icon-progressThree.png" alt="paso 3">
+      <p class="registro__progress_text" *ngIf="polizaComp">Póliza</p>
+      <p class="registro__progress_text" *ngIf="contactoComp">Contacto</p>
+      <p class="registro__progress_text" *ngIf="seguridadComp">Seguridad</p>
+    </div>
+    <button class="registro__progress_show" (click)="showResponsiveDetail()">
+      <img *ngIf="!showResponsive" src="./../../../../../assets/icons/icon-arrowDownOrange.png" alt="muestra avance">
+      <img *ngIf="showResponsive" src="./../../../../../assets/icons/icon-arrowUpOrange.png" alt="oculta avance">
+    </button>
+    <div id="responsiveModal" class="registro__progress_detail">
+      <div class="registro__progress_detail-box">
+        <div id="responsiveFirst" class="registro__progress_detail-number">1</div>
+        <p id="responsivePoliza">Póliza</p>
+      </div>
+      <div id="firstStep" class="registro__progress_detail-follow"></div>
+      <div class="registro__progress_detail-box">
+        <div id="responsiveSecond" class="registro__progress_detail-number">2</div>
+        <p id="responsiveContacto">Contacto</p>
+      </div>
+      <div id="secondStep" class="registro__progress_detail-follow"></div>
+      <div class="registro__progress_detail-box">
+        <div id="responsiveThird" class="registro__progress_detail-number">3</div>
+        <p id="responsiveSeguridad">Seguridad</p>
+      </div>
+    </div>
+  </div>
+  <div class="registro__secciones">
+    <app-poliza *ngIf="polizaComp" (polizaSeleccionada)="setPolizaSeleccionada($event)"></app-poliza>
+    <app-contacto *ngIf="contactoComp" (contactoSeleccionado)="setContactoSeleccionado($event)"></app-contacto>
+    <app-seguridad *ngIf="seguridadComp" (registroCompleto)="setRegistroCompleto($event)"></app-seguridad>
+  </div>
+
+</div>

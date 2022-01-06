@@ -1,0 +1,190 @@
+$color-primary: #002e71;
+$color-secondary: #ff9e0a;
+$color-notice: #33486c;
+$color-modal: #ff6b0b;
+$color-disabled-background: #f6f9fd;
+$color-disabled-text: #acb4c0;
+$color-input-line: #aac3ee;
+
+.security {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 5%;
+  width: 100%;
+  &__title {
+    border-bottom: 1px solid $color-secondary;
+    color: $color-primary;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    line-height: 16px;
+    padding-bottom: 8px;
+    width: 100%;
+    grid-column: 1 / 3;
+  }
+  &__inputs {
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 300px);
+    grid-template-rows: repeat(7, 1fr);
+    grid-gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    width: 100%;
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 80px 80px 80px;
+    }
+    @media (max-width: 360px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(8, 80px);
+    }
+  }
+  &__numero {
+    border: none;
+    border-bottom: 1px solid $color-input-line;
+    color: $color-notice;
+    font-size: 16px;
+    margin-bottom: 40px;
+    margin-right: 24px;
+    padding-bottom: 8px;
+    width: 100%;
+  }
+  &__numero:focus {
+    outline: none;
+  }
+  &__button {
+    border: none;
+    border-radius: 5px;
+    background-color: $color-modal;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 1.25px;
+    margin-left: 5%;
+    outline: none;
+    padding: 14px 16px;
+  }
+  &__button:disabled {
+    background-color: $color-disabled-background;
+    color: $color-disabled-text;
+  }
+  &__placeholder {
+    position: relative;
+    &_text {
+      color: transparent;
+      font-size: 12px;
+      position: absolute;
+      top: -25%;
+    }
+    &_unmatch {
+      bottom: 20%;
+      color: $color-notice;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0.5px;
+      position: absolute;
+    }
+    &_password {
+      background-color: white;
+      bottom: -370px;
+      box-shadow: 0px 10px 12px 0px #002e711f;
+      display: none;
+      left: -20%;
+      position: absolute;
+      width: 320px;
+      z-index: 100;
+      &_validation {
+        align-items: center;
+        display: flex;
+        width: 100%;
+      }
+
+      &_wrong {
+        color: #9a4443;
+      }
+      &_correct {
+        color: #44956c;
+      }
+    }
+  }
+  &__textUp {
+    @media (max-width: 360px) {
+      grid-row: 1;
+    }
+  }
+  &__password {
+    @media (max-width: 360px) {
+      grid-row: 2;
+    }
+  }
+  &__confirm {
+    @media (max-width: 360px) {
+      grid-row: 3;
+    }
+  }
+  &__textDown {
+    @media (max-width: 360px) {
+      grid-row: 4;
+    }
+  }
+  &__pregunta1 {
+    grid-row: 5;
+    grid-column: 1 / 3;
+    @media (max-width: 360px) {
+      grid-row: 5;
+    }
+  }
+  &__respuesta1 {
+    grid-row: 6;
+    grid-column: 1 / 3;
+    @media (max-width: 360px) {
+      grid-row: 6;
+    }
+  }
+  &__pregunta2 {
+    grid-row: 7;
+    grid-column: 1 / 3;
+    @media (max-width: 360px) {
+      grid-row: 7;
+    }
+  }
+  &__respuesta2 {
+    grid-row: 8;
+    grid-column: 1 / 3;
+    @media (max-width: 360px) {
+      grid-row: 8;
+    }
+  }
+  & button {
+    background-color: white;
+    border: none;
+    position: absolute;
+    top: -10%;
+    right: 0;
+  }
+  &__button {
+    border: none;
+    border-radius: 5px;
+    background-color: $color-modal;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 1.25px;
+    outline: none;
+    padding: 14px 16px;
+  }
+  &__button:disabled {
+    background-color: $color-disabled-background;
+    color: $color-disabled-text;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

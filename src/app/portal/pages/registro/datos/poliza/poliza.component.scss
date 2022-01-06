@@ -1,0 +1,172 @@
+$color-primary: #002e71;
+$color-secondary: #ff9e0a;
+$color-notice: #33486c;
+$color-modal: #ff6b0b;
+$color-disabled-background: #f6f9fd;
+$color-disabled-text: #acb4c0;
+$color-input-line: #aac3ee;
+
+.poliza {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  &__modal {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0px 2px 4px 0px #00000024;
+    display: flex;
+    align-items: center;
+    left: 2.55%;
+    position: absolute;
+    top: 5%;
+    right: 2.5%;
+    width: 95%;
+    z-index: 100;
+    & img {
+      height: 24px;
+      margin-right: 10px;
+      width: 24px;
+    }
+    &_button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      right: 0;
+      & img {
+        height: 14px;
+        width: 14px;
+      }
+    }
+  }
+  &__correct {
+    background-color: #e3f5eb;
+  }
+  &__incorrect {
+    background-color: #f8ebed;
+  }
+  &__correctText {
+    color: #44956c;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    line-height: 16px;
+  }
+  &__incorrectText {
+    color: #9a4443;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    line-height: 16px;
+  }
+  &__validationP {
+    color: #33486c;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    line-height: 24px;
+  }
+  &__title {
+    border-bottom: 1px solid $color-secondary;
+    color: $color-primary;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    line-height: 16px;
+    padding-bottom: 8px;
+    width: 100%;
+  }
+  &__inputs {
+    align-items: center;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 80px min-content;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    width: 100%;
+    @media (max-width: 768px) {
+      grid-template-columns: none;
+      grid-template-rows: 80px 80px min-content;
+    }
+  }
+  &__numero {
+    border: none;
+    border-bottom: 1px solid $color-input-line;
+    color: $color-notice;
+    font-size: 16px;
+    margin-bottom: 40px;
+    margin-right: 24px;
+    outline: none;
+    padding-bottom: 8px;
+    width: 100%;
+  }
+  &__numero:focus {
+    outline: none;
+  }
+  &__holder {
+    position: relative;
+  }
+  &__calendar {
+    height: 24px;
+    position: absolute;
+    top: -5px;
+    right: 5%;
+    width: 24px;
+  }
+  &__button {
+    border: none;
+    border-radius: 5px;
+    background-color: $color-modal;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 1.25px;
+    outline: none;
+    padding: 14px 16px;
+  }
+  &__button:disabled {
+    background-color: $color-disabled-background;
+    color: $color-disabled-text;
+  }
+  &__placeholder {
+    position: relative;
+    &_text {
+      color: transparent;
+      font-size: 12px;
+      position: absolute;
+      top: -25%;
+    }
+    &_tooltip {
+      bottom: 10px;
+      color: $color-notice;
+      display: none;
+      font-size: 12px;
+      font-weight: 400;
+      position: absolute;
+    }
+  }
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+  -webkit-appearance: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

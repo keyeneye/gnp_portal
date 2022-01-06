@@ -1,0 +1,100 @@
+$color-primary: #002e71;
+$color-secondary: #ff9e0a;
+$color-notice: #33486c;
+$color-modal: #ff6b0b;
+$color-disabled-background: #f6f9fd;
+$color-disabled-text: #acb4c0;
+
+.registro {
+  padding: 24px;
+  &__titulo {
+    align-items: center;
+    border-bottom: 1px solid $color-secondary;
+    display: flex;
+    padding-bottom: 15px;
+    width: 100%;
+    & img {
+      height: 15px;
+      width: 15px;
+    }
+    & h1 {
+      color: $color-primary;
+      font-size: 47px;
+      font-weight: 300;
+      line-height: 60px;
+      margin-left: 20px;
+    }
+  }
+  &__aviso {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 48px 80px 10px;
+    @media (max-width: 768px) {
+      padding: 0;
+    }
+    &_titulo {
+      border-bottom: 1px solid $color-secondary;
+      color: $color-primary;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 16px;
+      padding-bottom: 8px;
+      width: 100%;
+    }
+    &_texto {
+      color: $color-notice;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0.25px;
+      text-align: justify;
+    }
+  }
+  &__checkboxes {
+    height: 72px;
+    padding: 0 80px;
+    @media (max-width: 768px) {
+      padding: 0;
+    }
+  }
+  &__check {
+    width: 100%;
+    & input {
+      cursor: pointer;
+    }
+    & label {
+      color: $color-notice;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0.5px;
+      margin-left: 16px;
+      & span {
+        color: $color-modal;
+        cursor: pointer;
+        text-decoration: none;
+      }
+    }
+  }
+  &__button {
+    background-color: $color-modal;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 24px;
+    margin-bottom: 40px;
+    padding: 14px 16px;
+  }
+  &__button:disabled {
+    background-color: $color-disabled-background;
+    color: $color-disabled-text;
+  }
+  &__back {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  &__confirm {
+    background-color: red;
+  }
+}

@@ -1,0 +1,74 @@
+<main class="login">
+  <div class="login__container">
+    <form class="login__form" [formGroup]="loginForm" (ngSubmit)="login()">
+      <h3>{{mensajeBienvenida}}</h3>
+      <div class="login__data">
+        <div class="login__placeholder">
+          <label class="login__placeholder_text" id="emailInput">
+            Correo electrónico
+          </label>
+          <input class="login__input" (focus)="mostrarEmailPlaceholder()" (focusout)="ocultarEmailPlaceholder()"
+            type="text" name="email" formControlName="email" id="email" placeholder="Correo electronico">
+        </div>
+        <div *ngIf="email.invalid && (password.touched || password.dirty) && email.touched">
+          <p class="login__errors" *ngIf="email.errors?.required">
+            El correo es requerido
+          </p>
+          <p class="login__errors" *ngIf="email.errors?.email">
+            Formato de correo inválido. Intenta nuevamente
+          </p>
+        </div>
+        <p class="login__errors" *ngIf="this.correoNoExiste && !email.errors">
+          Debe agregar un correo electrónico
+        </p>
+        <div class="login__password__container">
+          <div class="login__placeholder">
+            <label class="login__placeholder_text" id="passwordInput">
+              Contraseña
+            </label>
+            <input class="login__input" (focus)="mostrarPasswordPlaceholder(); validarExistenciaCorreo()"
+              (focusout)="ocultarPasswordPlaceholder(); validarPassword()" (click)="validarExistenciaCorreo()"
+              formControlName="password" name="password" type="password" placeholder="Contraseña" id="login_password">
+          </div>
+          <div *ngIf="password.invalid && (password.touched || password.dirty)">
+            <p class="login__errors" *ngIf="password.errors?.required">
+              La contraseña es requerida
+            </p>
+          </div>
+          <p class="login__errors" *ngIf="this.passwordInvalid && !password.errors">
+            Contraseña incorrecta. Por tu seguridad, tu cuenta se bloqueara despues de tres intentos fallidos
+          </p>
+          <button class="login__show" type="button" (click)="showPassword()">
+            <img src="../../../../assets/icons/icon-eye.png" alt="mostrar contraseña">
+          </button>
+        </div>
+        <div class="login__buttons">
+          <a class="login__button" type="button">
+            ¿Olvidaste tu Contraseña?
+          </a>
+          <button type="submit" class="login__session"
+            [disabled]="this.loginForm.value.email === '' || this.loginForm.value.password === ''"
+            routerLink="/home/general/">
+            Iniciar sesion
+          </button>
+          <a id="register-anchor" class="login__button" routerLink="/register">
+            Crea tu registro
+          </a>
+        </div>
+      </div>
+      <div class="login__text">
+        <p>
+          <strong>
+            ¿No te puedes registrar?
+          </strong>
+        </p>
+        <p>
+          Comunicate al numero <span> 55 5227 9000</span> opcion:
+        </p>
+        <p>
+          Asistencia Portal Soy Cliente y aplicacion GNP movil
+        </p>
+      </div>
+    </form>
+  </div>
+</main>

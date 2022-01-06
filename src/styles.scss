@@ -1,0 +1,94 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.registro__confirm {
+  background-color: #ff6b0b;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  justify-self: flex-start;
+  margin-right: 75%;
+  outline: none;
+  padding: 8px 16px;
+}
+$color-primary: #002e71;
+$color-secondary: #ff9e0a;
+$color-notice: #33486c;
+$color-modal: #ff6b0b;
+$color-disabled-background: #f6f9fd;
+$color-disabled-text: #acb4c0;
+$color-input-line: #aac3ee;
+
+.contacto {
+  display: flex;
+  flex-wrap: wrap;
+  width: 800px;
+  @media (max-width: 768px) {
+    width: 750px;
+  }
+  @media (max-width: 320px) {
+    width: 300px;
+  }
+
+  &__numero {
+    border: none;
+    border-bottom: 1px solid $color-input-line;
+    color: $color-notice;
+    font-size: 16px;
+    margin-bottom: 40px;
+    margin-right: 24px;
+    margin-top: 24px;
+    padding-bottom: 8px;
+    width: 300px;
+  }
+  &__numero:focus {
+    outline: none;
+  }
+  &__placeholder {
+    position: relative;
+    &_text {
+      color: transparent;
+      font-size: 12px;
+      position: absolute;
+      top: -25%;
+    }
+  }
+}
+.modal__button {
+  border: none;
+  border-radius: 5px;
+  background-color: $color-modal;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  height: 32px;
+  line-height: 20px;
+  letter-spacing: 1.25px;
+  padding: 8px 16px;
+}
+.modal__button:disabled {
+  background-color: $color-disabled-background;
+  color: $color-disabled-text;
+}
+/* General Styles */
+.general-button-orange {
+  background-color: rgb(250, 89, 19);
+  font-family: "OpenSansNormal", sans-serif;
+  font-size: 16px;
+  color: rgb(255, 255, 255);
+  border-radius: 4px;
+}
+
+/* Fonts */
+@font-face {
+  font-family: OpenSansNormal;
+  src: url("../src/assets/fonts/OpenSans-Regular.ttf");
+}

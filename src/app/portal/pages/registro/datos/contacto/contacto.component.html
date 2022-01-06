@@ -1,0 +1,48 @@
+<form [formGroup]="contactoForm" class="contacto">
+  <h3 class="contacto__title">DATOS DE CONTACTO</h3>
+  <div class="contacto__inputs">
+    <div class="contacto__placeholder">
+      <label class="contacto__placeholder_text" id="correo">Correo electrónico</label>
+      <input class="contacto__numero" id="mailContact" (focus)="mostrarCorreo()"
+        (focusout)="ocultarCorreo(); validarCorreo();" type="text" placeholder="Correo electrónico"
+        formControlName="correo">
+      <label class="contacto__placeholder_tooltip" id="emailTooltip">Formato de correo inválido.
+        Intenta nuevamente</label>
+    </div>
+    <div class="contacto__placeholder">
+      <label class="contacto__placeholder_text" id="celular">Teléfono celular</label>
+      <input class="contacto__numero" id="phoneContact" (focus)="mostrarCelular();" maxlength="10"
+        (focusout)="ocultarCelular(); validarTelefono();" (keydown)="soloNumeros($event)" type="text"
+        placeholder="Teléfono celular" formControlName="celular">
+      <label class="contacto__placeholder_tooltip" id="phoneTooltip">Número compuesto por 10
+        digitos.
+        No se deben contar
+        espacios en blanco ni caracteres especiales</label>
+      <label class="contacto__placeholder_tooltip" id="phoneTooltipError">El teléfono ingresado no es
+        valido, favor de verificarlo</label>
+    </div>
+    <div class="contacto__placeholder contacto__method"
+      *ngIf="this.contactoForm.value.correo !== '' && this.contactoForm.value.celular !== '' && this.contactoForm.value.celular.length === 10 && validEmail && validPhone">
+      <p class="contacto__text">Selecciona el medio para verificar tu cuenta </p>
+      <div class="contacto__metodos">
+        <div class="contacto__metodos_container">
+          <label class="container">Correo electrónico
+            <input type="checkbox" formControlName="metodo_correo" name="radio">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="contacto__metodos_container">
+          <label class="container">Teléfono celular
+            <input type="checkbox" maxLength="10" formControlName="metodo_mensaje" name="radio">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="contacto__button"
+    [disabled]="email.errors?.email || !validEmail || !validPhone || phone.errors?.minlength || this.contactoForm.value.correo === '' || this.contactoForm.value.celular === '' || (!this.contactoForm.value.metodo_correo && !this.contactoForm.value.metodo_mensaje)"
+    type="button" (click)="onContactoSeleccionado()">
+    Continuar
+  </button>
+</form>

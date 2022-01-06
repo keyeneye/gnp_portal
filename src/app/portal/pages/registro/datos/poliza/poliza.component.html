@@ -1,0 +1,53 @@
+<form [formGroup]="polizaForm" class="poliza">
+  <div *ngIf="showModal" class="poliza__message" id="polizaModal">
+    <div *ngIf="polizaCorrecta" class=" poliza__modal poliza__correct">
+      <img src="./../../../../../../assets/icons/icon-corectValidation.png" alt="referencia existente">
+      <div class="poliza__validationText">
+        <h4 class="poliza__correctText">VALIDACION</h4>
+        <p class="poliza__validationP">La informaciòn coincide correctamente</p>
+      </div>
+    </div>
+    <div *ngIf="!polizaCorrecta" class="poliza__modal poliza__incorrect">
+      <img src="./../../../../../../assets/icons/icon-incorrectValidation.png" alt="referencia  no existente">
+      <div class="poliza__validationText">
+        <h4 class="poliza__incorrectText">VALIDACION</h4>
+        <p class="poliza__validationP">Lo sentimos, favor de verificar el número de póliza o fecha de nacimiento</p>
+      </div>
+    </div>
+  </div>
+  <h3 class="poliza__title">Póliza</h3>
+  <div class="poliza__inputs">
+    <div class="poliza__placeholder">
+      <label class="poliza__placeholder_text" id="numeroReferencia">No. de póliza o de referencia</label>
+      <input class="poliza__numero" (keydown)="soloNumeros($event)" (focus)="mostrarReferencia()"
+        (focusout)="ocultarReferencia()" type="text" name="numeroPoliza" id="numeroPoliza" autocomplete="off"
+        placeholder="No. de póliza o de referencia" formControlName="numeroPoliza">
+      <label class="poliza__placeholder_tooltip" id="referenciaTooltip">Ingresa número de póliza o referencia vigente y
+        sin espacios</label>
+    </div>
+    <div class="poliza__placeholder">
+      <label class="poliza__placeholder_text" id="fechaNacimiento">Fecha de nacimiento</label>
+      <input class="poliza__numero" id="inputDate" (focus)="mostrarNacimiento()" (focusout)="ocultarNacimiento()"
+        type="text" name="date" id="fechaVencimiento" min="{{firstDate|date: 'yyyy-MM-dd'}}"
+        max="{{actualDate|date: 'yyyy-MM-dd'}}" placeholder="Fecha de nacimiento" onfocus="(this.type='date')"
+        formControlName="fechaVencimiento">
+      <img class="poliza__calendar" src="./../../../../../../assets/icons/icon-calendar.png" alt="calendario">
+    </div>
+    <div class="poliza__placeholder"
+      *ngIf="this.polizaForm.value.numeroPoliza !== '' && this.polizaForm.value.fechaVencimiento !== ''">
+      <label class="poliza__placeholder_text" id="numeroCertificado">No de certificado</label>
+      <input class="poliza__numero" (keydown)="soloNumeros($event)" autocomplete="off" (focus)="mostrarCertificado()"
+        (focusout)="ocultarCertificado()" type="text" name="certificado" id="certificado" formControlName="certificado"
+        placeholder="No de certificado">
+    </div>
+  </div>
+  <button class="poliza__button"
+    [disabled]="this.polizaForm.value.numeroPoliza === '' || this.polizaForm.value.fechaVencimiento === '' || this.polizaForm.value.certificado === '' || !polizaCorrecta "
+    type="button" (click)="onPolizaSeleccionada()">
+    Continuar
+  </button>
+</form>
+
+
+
+<!-- <pre>{{polizaForm.value|json}}</pre> -->

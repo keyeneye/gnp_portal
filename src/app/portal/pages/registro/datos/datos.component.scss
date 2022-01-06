@@ -1,0 +1,190 @@
+$color-primary: #002e71;
+$color-secondary: #ff9e0a;
+$color-notice: #33486c;
+$color-modal: #ff6b0b;
+$color-disabled-background: #f6f9fd;
+$color-disabled-text: #acb4c0;
+
+.registro {
+  padding: 24px;
+  &__titulo {
+    align-items: center;
+    border-bottom: 1px solid $color-secondary;
+    display: flex;
+    padding-bottom: 15px;
+    width: 100%;
+    & img {
+      height: 15px;
+      width: 15px;
+    }
+    & h1 {
+      color: $color-primary;
+      font-size: 47px;
+      font-weight: 300;
+      line-height: 60px;
+      margin-left: 20px;
+    }
+  }
+  &__back {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__data {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 24px;
+    position: relative;
+    width: 100%;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  &__progress {
+    align-items: center;
+    background-color: $color-disabled-background;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding: 16px 5%;
+    position: relative;
+    width: 90%;
+    @media (min-width: 768px) {
+      display: none;
+    }
+    &_current {
+      display: flex;
+      justify-content: space-around;
+      width: 120px;
+    }
+    &_text {
+      color: #33445f;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+    &_show {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
+    &_detail {
+      background-color: $color-disabled-background;
+      bottom: -180px;
+      box-shadow: 0px 20px 4px 0px #002e7124;
+      display: none;
+      height: 180px;
+      left: 0;
+      padding: 0 5%;
+      position: absolute;
+      width: inherit;
+      z-index: 100;
+      &-box {
+        align-items: center;
+        display: flex;
+        width: 80px;
+        p {
+          margin-left: 24px;
+          text-align: left;
+          font-family: Open Sans;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px;
+          letter-spacing: 0.5px;
+          text-align: left;
+        }
+      }
+      &-number {
+        align-items: center;
+        background-color: $color-disabled-text;
+        border: 1px solid $color-disabled-text;
+        border-radius: 50%;
+        color: #567099;
+        display: flex;
+        justify-content: center;
+        padding: 6px;
+      }
+      &-follow {
+        background-color: $color-disabled-text;
+        height: 24px;
+        margin-bottom: -12px;
+        margin-left: 1.7%;
+        margin-top: -12px;
+        width: 2px;
+        @media (max-width: 360px) {
+          margin-left: 5%;
+        }
+      }
+    }
+  }
+  &__tags {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    &_seccion {
+      border: none;
+      background-color: white;
+      border-top: 2px solid $color-disabled-text;
+      color: $color-disabled-text;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      line-height: 16px;
+      margin: 0 16px;
+      padding-top: 8px;
+    }
+    &_seccion:focus {
+      border-top: 2px solid $color-modal;
+      color: $color-modal;
+      outline: none;
+    }
+    &_seccion:focus-visible {
+      border-top: 2px solid $color-modal;
+      color: $color-modal;
+      outline: none;
+    }
+    &_legend {
+      color: $color-notice;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.15px;
+      line-height: 24px;
+      margin-top: 24px;
+      margin-bottom: 48px;
+    }
+  }
+  &__return {
+    bottom: 30px;
+    left: 10%;
+    display: flex;
+    position: absolute;
+    @media (max-width: 768px) {
+      display: none;
+    }
+    &__button {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 120px;
+    }
+    &__text {
+      color: $color-modal;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: 1.25px;
+    }
+  }
+  &__secciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+}

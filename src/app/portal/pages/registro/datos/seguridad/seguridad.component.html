@@ -1,0 +1,162 @@
+<form [formGroup]="securityForm" class="security">
+  <div class="security__inputs">
+    <h3 class="security__title security__textUp">Contraseña</h3>
+    <div class="security__password">
+      <div class="security__placeholder">
+        <label class="security__placeholder_text" id="passwordPlace">Contraseña</label>
+        <input class="security__numero" (focus)="showPasswordPlace()" (focusout)="hidePasswordPlace()" type="password"
+          id="password" placeholder="Contraseña" formControlName="password">
+        <button type="button" (click)="showPassword()">
+          <img src="./../../../../../../assets/icons/icon-eye.png" alt="mostrar contraseña">
+        </button>
+        <div id="passwordValidations" class="security__placeholder_password">
+          <div class="security__placeholder_password_validation">
+            <div class="security__placeholder_password_tag">
+              <img *ngIf="password.value.length < 8" src="./../../../../../../assets/icons/icon-incorrectValidation.png"
+                alt="error">
+              <img *ngIf="password.value.length >= 8" src="./../../../../../../assets/icons/icon-corectValidation.png"
+                alt="correcto">
+            </div>
+            <p *ngIf="password.value.length < 8" class="security__placeholder_password_wrong">Debe ser al menos 8
+              caracteres</p>
+            <p *ngIf="password.value.length >= 8" class="security__placeholder_password_correct">Debe ser al menos 8
+              caracteres</p>
+          </div>
+          <div class="security__placeholder_password_validation">
+            <div class="security__placeholder_password_tag">
+              <img *ngIf="!includeCapitalize" src="./../../../../../../assets/icons/icon-incorrectValidation.png"
+                alt="error">
+              <img *ngIf="includeCapitalize" src="./../../../../../../assets/icons/icon-corectValidation.png"
+                alt="correcto">
+            </div>
+            <p *ngIf="!includeCapitalize" class="security__placeholder_password_wrong">Debe
+              contener al menos una
+              mayúscula</p>
+            <p *ngIf="includeCapitalize" class="security__placeholder_password_correct">Debe contener al menos
+              una mayúscula</p>
+          </div>
+          <div class="security__placeholder_password_validation">
+            <div class="security__placeholder_password_tag">
+              <img *ngIf="!includeSpecialCharacters" src="./../../../../../../assets/icons/icon-incorrectValidation.png"
+                alt="error">
+              <img *ngIf="includeSpecialCharacters" src="./../../../../../../assets/icons/icon-corectValidation.png"
+                alt="correcto">
+            </div>
+            <p *ngIf="!includeSpecialCharacters" class="security__placeholder_password_wrong">Debe contener al menos un
+              caracter especial</p>
+            <p *ngIf="includeSpecialCharacters" class="security__placeholder_password_correct">Debe contener al menos un
+              caracter especial</p>
+          </div>
+          <div class="security__placeholder_password_validation">
+            <div class="security__placeholder_password_tag">
+              <img *ngIf="!includeGNP" src="./../../../../../../assets/icons/icon-incorrectValidation.png" alt="error">
+              <img *ngIf="includeGNP" src="./../../../../../../assets/icons/icon-corectValidation.png" alt="correcto">
+            </div>
+            <p *ngIf="!includeGNP" class="security__placeholder_password_wrong">No debe contener la
+              palabra GNP</p>
+            <p *ngIf="includeGNP" class="security__placeholder_password_correct">No debe contener la
+              palabra GNP</p>
+          </div>
+          <div class="security__placeholder_password_validation">
+            <div class="security__placeholder_password_tag">
+              <img *ngIf="!includeSameCharacters" src="./../../../../../../assets/icons/icon-incorrectValidation.png"
+                alt="error">
+              <img *ngIf="includeSameCharacters" src="./../../../../../../assets/icons/icon-corectValidation.png"
+                alt="correcto">
+            </div>
+            <p *ngIf="!includeSameCharacters" class="security__placeholder_password_wrong">No debe contener más de
+              dos caracteres consecutivos iguales (p.e. 222, eee).</p>
+            <p *ngIf="includeSameCharacters" class="security__placeholder_password_correct">No debe contener más de
+              dos caracteres consecutivos iguales (p.e. 222, eee).</p>
+          </div>
+          <div class="security__placeholder_password_validation">
+            <div class="security__placeholder_password_tag">
+              <img *ngIf="!includeConsecutiveChars" src="./../../../../../../assets/icons/icon-incorrectValidation.png"
+                alt="error">
+              <img *ngIf="includeConsecutiveChars" src="./../../../../../../assets/icons/icon-corectValidation.png"
+                alt="correcto">
+            </div>
+            <p *ngIf="!includeConsecutiveChars" class="security__placeholder_password_wrong">No debe contener más de
+              dos caracteres consecutivos (p.e. 123, abc).</p>
+            <p *ngIf="includeConsecutiveChars" class="security__placeholder_password_correct">No debe contener más de
+              dos caracteres consecutivos (p.e. 123, abc).</p>
+          </div>
+          <div class="security__placeholder_password_validation">
+            <div class="security__placeholder_password_tag">
+              <img *ngIf="!includeWhiteSpace" src="./../../../../../../assets/icons/icon-incorrectValidation.png"
+                alt="error">
+              <img *ngIf="includeWhiteSpace" src="./../../../../../../assets/icons/icon-corectValidation.png"
+                alt="correcto">
+            </div>
+            <p *ngIf="!includeWhiteSpace" class="security__placeholder_password_wrong">No debe contener espacios
+              en blanco.</p>
+            <p *ngIf="includeWhiteSpace" class="security__placeholder_password_correct">No debe contener
+              espacios en blanco.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="security__confirm">
+      <div class="security__placeholder">
+        <label class="security__placeholder_text" id="confirmPasswordPlace">Confirmar contraseña</label>
+        <input class="security__numero" id="confirmPassword" (focus)="showConfirmPasswordPlace()"
+          (focusout)="hideConfirmPasswordPlace()" type="password" id="confirmPassword" formControlName="confirmPassword"
+          placeholder="Confirmar contraseña">
+        <button type="button" (click)="showConfirmPassword()">
+          <img src="./../../../../../../assets/icons/icon-eye.png" alt=" mostrar contraseña">
+        </button>
+        <div id="passwordUnmatch">
+          <label
+            *ngIf="(this.securityForm.value.password !== this.securityForm.value.confirmPassword) && this.securityForm.value.confirmPassword.length > 0"
+            class="security__placeholder_unmatch">Las contraseñas no coinciden</label>
+        </div>
+      </div>
+    </div>
+    <h3 class="security__title security__textDown">SEGURIDAD</h3>
+    <div class="security__pregunta1">
+      <div class="security__placeholder">
+        <label class="security__placeholder_text" id="questionOnePlace">Pregunta 1</label>
+        <input class="security__numero" (focus)="showQuestionOnePlace()" (focusout)="hideQuestionOnePlace()" type="text"
+          name="numeroPoliza" id="questionOne" placeholder="Pregunta 1" formControlName="firstQuestion">
+        <button type="button">
+          <img src="./../../../../../../assets/icons/icon-arrowDown.png" alt=" mostrar detalle">
+        </button>
+      </div>
+    </div>
+    <div class="security__respuesta1">
+      <div class="security__placeholder">
+        <label class="security__placeholder_text" id="answerOnePlace">Respuesta 1</label>
+        <input class="security__numero" (focus)="showAnswerOnePlace()" (focusout)="hideAnswerOnePlace()" type="password"
+          name="numeroPoliza" id="answerOne" placeholder="Respuesta 1" formControlName="firstAnswer">
+        <button type="button" (click)="showAnswerOne()">
+          <img src="./../../../../../../assets/icons/icon-eye.png" alt=" mostrar respuesta 1">
+        </button>
+      </div>
+    </div>
+    <div class="security__pregunta2">
+      <div class="security__placeholder">
+        <label class="security__placeholder_text" id="questionTwoPlace">Pregunta 2</label>
+        <input class="security__numero" (focus)="showQuestionTwoPlace()" (focusout)="hideQuestionTwoPlace()" type="text"
+          name="numeroPoliza" id="questionTwo" placeholder="Pregunta 2" formControlName="secondQuestion">
+        <button type="button">
+          <img src="./../../../../../../assets/icons/icon-arrowDown.png" alt=" mostrar detalle">
+        </button>
+      </div>
+    </div>
+    <div class="security__respuesta2">
+      <div class="security__placeholder">
+        <label class="security__placeholder_text" id="answerTwoPlace">Respuesta 2</label>
+        <input class="security__numero" (focus)="showAnswerTwoPlace()" (focusout)="hideAnswerTwoPlace()" type="password"
+          name="numeroPoliza" id="answerTwo" placeholder="Respuesta 2" formControlName="secondAnswer">
+        <button type="button" (click)="showAnswerTwo()">
+          <img src="./../../../../../../assets/icons/icon-eye.png" alt=" mostrar respuesta 2">
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+<button class="security__button"
+  [disabled]="!includeEightCharacters || !includeCapitalize || !includeGNP || !includeConsecutiveChars || !includeWhiteSpace || !includeSameCharacters || !includeSpecialCharacters || !matchPassword || this.securityForm.value.password === '' || this.securityForm.value.confirmPassword === '' || this.securityForm.value.firstQuestion === '' || this.securityForm.value.firstAnswer === '' || this.securityForm.value.secondQuestion === '' || this.securityForm.value.secondAnswer === '' "
+  type="button" (click)="onRegistroCompleto()">
+  Continuar
+</button>

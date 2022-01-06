@@ -1,0 +1,48 @@
+<form class="registro" [formGroup]="registerForm">
+  <div class="registro__titulo">
+    <button type="button" class="registro__back" routerLink="/login">
+      <img src="{{arrowBackIcon}}" alt="regresar a login">
+    </button>
+    <h1>Registro</h1>
+  </div>
+  <div class="registro__aviso">
+    <h3 class="registro__aviso_titulo">AVISO DE PRIVACIDAD INTEGRAL</h3>
+    <p class="registro__aviso_texto">
+      Grupo Nacional Provincial, S.A.B., con domicilio en Avenida Cerro de las Torres No. 395, Colonia Campestre
+      Churubusco, Código Postal 04200, Alcaldía Coyoacán, Ciudad de México, tratará sus datos personales, patrimoniales
+      e incluso sensibles para evaluar su solicitud de seguro y en caso de ser aceptada brindarle los servicios
+      relacionados con su contrato de seguro. Puede consultar la versión integral del Aviso de Privacidad en la página
+      www.gnp.com.mx
+      Al hacer clic en “CONTINUAR” reconozco que previo al tratamiento y a proporcionar mis datos personales se ha
+      puesto a mi disposición el Aviso de Privacidad Integral de Grupo Nacional Provincial, S.A.B. (en lo sucesivo GNP),
+      el cual he leído y comprendido, por lo que tengo conocimiento de (i) la identidad y domicilio de GNP; (ii) los
+      datos personales que serán sujetos a tratamiento; (iii) las finalidades primarias y secundarias del tratamiento,
+      así como las transferencias que van a efectuarse; (iv) los medios habilitados para limitar el uso o divulgación de
+      mis datos personales y/o revocar mi consentimiento, así como para ejercer mis derechos de acceso, rectificación,
+      cancelación y oposición. Asimismo manifiesto tener conocimiento que puedo consultar el Aviso de Privacidad
+      Integral y sus actualizaciones en cualquier momento en la página www.gnp.com.mx
+      En caso de haber proporcionado datos personales de otros titulares, reconozco haber cumplido con mi obligación de
+      informarles sobre su entrega, haber obtenido de forma previa el consentimiento de éstos para su tratamiento, así
+      como haberles informado los lugares en los que se encuentra disponible el Aviso de Privacidad Integral para su
+      consulta.
+    </p>
+  </div>
+  <div class="registro__checkboxes">
+    <div class="registro__check">
+      <input type="checkbox" name="data" id="data" formControlName="privacidad">
+      <label>Conozco y entiendo que mis datos son tratados conforme al Aviso de privacidad Integral</label>
+    </div>
+    <div class="registro__check">
+      <input type="checkbox" name="terms" id="terms" formControlName="terminos">
+      <label>
+        He leído y acepto los <span (click)="mostrarTerminos()">Términos y condiciones de uso de Medios
+          Electrónicos</span> de Grupo Nacional
+        Provincial S.A.B
+      </label>
+    </div>
+    <button [disabled]="!this.registerForm.value.privacidad || !this.registerForm.value.terminos" type="button"
+      class="registro__button" routerLink="/register/data">
+      Continuar
+    </button>
+  </div>
+</form>
